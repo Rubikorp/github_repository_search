@@ -1,0 +1,21 @@
+$primary-color: #3f51b5;
+
+.app {
+	text-align: center;
+
+	h1 {
+		color: $primary-color;
+	}
+
+	.repository-table {
+		margin: 20px auto;
+		width: 80%;
+	}
+
+	.repository-details {
+		margin: 20px auto;
+		width: 80%;
+		border: 1px solid $primary-color;
+		padding: 15px;
+	}
+}

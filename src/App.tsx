@@ -1,26 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react'
+import { useAppSelector } from './redux/hooks'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import { Repository } from './types/repoSliceTypes'
+
+import RepositoryTable from './components/RepositoryTable'
+import RepositoryDetails from './components/RepositoryDetails'
+import styles from './styles/App.module.scss'
+
+const App: React.FC = () => {
+	const repositories = useAppSelector(state => state.repos.repositories)
+	const [selectedRepo, setSelectedRepo] = useState<Repository | null>(null)
+
+	return (
+		<div className={styles.app}>
+			<h1>Поиск репозиториев GitHub</h1>
+			<div className={styles.repositoryTable}>
+				<RepositoryTable
+					repositories={repositories}
+					onSelect={setSelectedRepo}
+				/>
+			</div>
+			<div className={styles.repositoryDetails}>
+				<RepositoryDetails repository={selectedRepo} />
+			</div>
+		</div>
+	)
 }
 
-export default App;
+export default App
