@@ -1,39 +1,25 @@
 import React from 'react'
+import {Repository} from "../types/repoSliceTypes"
+import styled from "../styles/RepositoryMoreDetails.module.scss"
+
 
 interface RepositoryMoreDetailsProps {
-  selectedRepo: {
-    name: string,
-    description: string,
-    language: string,
-    stargazers_count: number,
-    forks_count: number,
-    updated_at: string
-  }
+  selectedRepo: Repository
 }
 
 const RepositoryMoreDetails:React.FC<RepositoryMoreDetailsProps> = ({selectedRepo}) => {
   return (
-    <div>
-      <h2>Детали репозитория</h2>
-            <p>
-              <strong>Название:</strong> {selectedRepo.name}
-            </p>
-            <p>
-              <strong>Описание:</strong> {selectedRepo.description}
-            </p>
+    <div className={styled.container}>
+            <h2 className={styled.head_repository}>
+              {selectedRepo.name}
+            </h2>
             <p>
               <strong>Язык:</strong> {selectedRepo.language}
             </p>
             <p>
               <strong>Число звёзд:</strong> {selectedRepo.stargazers_count}
             </p>
-            <p>
-              <strong>Число форков:</strong> {selectedRepo.forks_count}
-            </p>
-            <p>
-              <strong>Дата обновления:</strong>{" "}
-              {new Date(selectedRepo.updated_at).toLocaleDateString()}
-            </p>
+            <p className={styled.license}>{selectedRepo.license?.name || ''}</p>
     </div>
   )
 }

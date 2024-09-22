@@ -1,52 +1,44 @@
-import React from 'react'
-import {
-	Pagination,
-	Select,
-	MenuItem,
-	InputLabel,
-	FormControl,
-	SelectChangeEvent,
-} from '@mui/material'
+import React, { useState } from "react";
+import TablePagination from "@mui/material/TablePagination";
 
 interface SortAndPaginationProps {
-	page: number
-	rowsPerPage: number
-	totalItems: number
-	onPageChange: (event: React.ChangeEvent<unknown>, value: number) => void
-	onRowsPerPageChange: (event: SelectChangeEvent<number>) => void 
-
+  page: number;
+  rowsPerPage: number;
+  totalItems: number;
+  setPage: React.Dispatch<React.SetStateAction<number>>;
+  setRowsPerPage: React.Dispatch<React.SetStateAction<number>>;
 }
 
 const SortAndPagination: React.FC<SortAndPaginationProps> = ({
-	page,
-	rowsPerPage,
-	totalItems,
-	onPageChange,
-	onRowsPerPageChange,
+  page,
+  rowsPerPage,
+  totalItems,
+  setPage,
+  setRowsPerPage
 }) => {
-	return (
-		<div>
-			<Pagination
-				count={Math.ceil(totalItems / rowsPerPage)}
-				page={page}
-				onChange={onPageChange}
-				variant='outlined'
-				shape='rounded'
-			/>
-			<FormControl variant='outlined' style={{ margin: '16px' }}>
-				<InputLabel id='rows-per-page-label'>На странице</InputLabel>
-				<Select
-					labelId='rows-per-page-label'
-					value={rowsPerPage}
-					onChange={onRowsPerPageChange}
-				>
-					<MenuItem value={5}>5</MenuItem>
-					<MenuItem value={10}>10</MenuItem>
-					<MenuItem value={20}>20</MenuItem>
-				</Select>
-			</FormControl>
-		</div>
-	)
-}
+  const handleChangePage = (
+    event: React.MouseEvent<HTMLButtonElement> | null,
+    newPage: number
+  ) => {
+    setPage(newPage);
+  };
 
-export default SortAndPagination
+  const handleChangeRowsPerPage = (
+    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    setRowsPerPage(parseInt(event.target.value, 10));
+    setPage(0);
+  };
+  return (
+    <TablePagination
+      component="div"
+      count={totalItems}
+      page={page}
+      onPageChange={handleChangePage}
+      rowsPerPage={rowsPerPage}
+      onRowsPerPageChange={handleChangeRowsPerPage}
+    />
+  );
+};
+
+export default SortAndPagination;
