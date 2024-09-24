@@ -1,7 +1,6 @@
 import * as React from "react";
 import {
   DataGrid,
-  GridCell,
   GridColDef,
 } from "@mui/x-data-grid";
 import Paper from "@mui/material/Paper";

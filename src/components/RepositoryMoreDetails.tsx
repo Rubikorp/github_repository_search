@@ -45,7 +45,7 @@ const RepositoryMoreDetails: React.FC<RepositoryMoreDetailsProps> = ({
         </p>
       </div>
       <p className={styled.license}>{selectedRepo.license?.name || ""}</p> 
-      <a className={styled.link} href={selectedRepo.html_url} target="_blank" title={selectedRepo.html_url}><FaGithub className={styled.svg_gth}/></a>
+      <a className={styled.link} href={selectedRepo.html_url} target="_blank"  rel="noreferrer" title={selectedRepo.html_url}><FaGithub className={styled.svg_gth}/></a>
     </div>
   );
 };
