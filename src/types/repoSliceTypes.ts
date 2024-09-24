@@ -10,6 +10,8 @@ interface Repository {
 	license: {
 		name: string
 	} | null
+	topics: string[]
+	html_url:string
 }
 
 interface RepositoriesState {

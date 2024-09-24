@@ -7,6 +7,7 @@ import RepositoryTable from "./components/RepositoryTable";
 import SearchComponent from "./components/SearchComponent";
 import Footer from "./components/Footer";
 import RepositoryMoreDetails from "./components/RepositoryMoreDetails";
+import HiComponent from "./components/HiComponent";
 
 import styles from "./styles/App.module.scss";
 
@@ -20,13 +21,21 @@ const App: React.FC = () => {
         <header>
           <SearchComponent />
         </header>
-        <div className={styles.repositoryTable}>
-          <RepositoryTable
-            repositories={repositories}
-            onSelect={setSelectedRepo}
-          />
-           {selectedRepo ? <RepositoryMoreDetails selectedRepo={selectedRepo}/> : <div className={styles.detailsHello}>Выберите репозитарий</div> }
-        </div>
+        {repositories.length !== 0 ? (
+          <div className={styles.repositoryTable}>
+            <RepositoryTable
+              repositories={repositories}
+              onSelect={setSelectedRepo}
+            />
+            {selectedRepo ? (
+              <RepositoryMoreDetails selectedRepo={selectedRepo} />
+            ) : (
+              <div className={styles.detailsHello}>Выберите репозитарий</div>
+            )}
+          </div>
+        ) : (
+          <HiComponent />
+        )}
       </div>
       <footer>
         <Footer />

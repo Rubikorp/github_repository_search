@@ -60,6 +60,7 @@ const RepositoryTable: React.FC<IRepositoryTableProps> = ({
         sx={{ border: "none" }}
         disableColumnMenu={true}
         disableColumnResize={true}
+        disableRowSelectionOnClick={true}
         onCellClick={(e)=> onSelect(e.row)}
       />
     </Paper>
