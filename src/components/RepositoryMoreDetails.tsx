@@ -1,8 +1,12 @@
 import React from "react";
-import { Repository } from "../types/repoSliceTypes";
 import styled from "../styles/RepositoryMoreDetails.module.scss";
+
 import { IoStarSharp } from "react-icons/io5";
 import { FaGithub } from "react-icons/fa";
+
+import { Repository } from "../types/repoSliceTypes";
+
+/*---------------import/\---------------*/
 
 interface RepositoryMoreDetailsProps {
   selectedRepo: Repository;
