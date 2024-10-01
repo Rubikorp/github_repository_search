@@ -16,7 +16,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '20'
+          node-version: '20' # используйте нужную вам версию
 
       - name: Install dependencies
         run: npm install
@@ -24,12 +24,14 @@ jobs:
       - name: Build the project
         run: npm run build
 
-      - name: Configure Git
+      - name: Configure SSH
         run: |
-          git config --global user.email "bik.big102rus@gmail.com"
-          git config --global user.name "Rubikorp"
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan github.com >> ~/.ssh/known_hosts
 
       - name: Deploy to GitHub Pages
+        run: npm run deploy
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: npm run deploy
