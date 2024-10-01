@@ -33,7 +33,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build -r https://Rubikorp:${GITHUB_TOKEN}@github.com/Rubikorp/github_repository_search.git"
   },
   "eslintConfig": {
     "extends": [
