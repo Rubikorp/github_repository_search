@@ -16,13 +16,18 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '20' # используйте нужную вам версию
+          node-version: '20'
 
       - name: Install dependencies
         run: npm install
 
       - name: Build the project
         run: npm run build
+
+      - name: Configure Git
+        run: |
+          git config --global user.email "bik.big102rus@gmail.com"
+          git config --global user.name "Ruslan Bikmetov"
 
       - name: Deploy to GitHub Pages
         env:
