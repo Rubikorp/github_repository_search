@@ -2,7 +2,7 @@
   "name": "github-repo-search",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://rubikorp.github.io/github_repository_search",
+  "homepage": "https://Rubikorp.github.io/github_repository_search",
   "dependencies": {
     "@emotion/react": "^11.13.0",
     "@emotion/styled": "^11.13.0",
