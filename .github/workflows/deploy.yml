@@ -30,6 +30,9 @@ jobs:
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan github.com >> ~/.ssh/known_hosts
+          
+      - name: Test SSH Connection
+        run: ssh -vT git@github.com
 
       - name: Deploy to GitHub Pages
         run: npm run deploy
